@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:training/core/constants/key_constants.dart';
 import 'package:training/data/local/prefs/shared_prefs.dart';
+import 'package:training/presentation/screen/auth/auth_screen.dart';
+import 'package:training/presentation/screen/home/home.dart';
 
-void main() async{
-   WidgetsFlutterBinding.ensureInitialized();
-   await sharedPrefs.init();
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await sharedPrefs.init();
   runApp(const MyApp());
 }
 
@@ -13,13 +16,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-      
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: sharedPrefs.get(KeyConstants.isLoggedIn)
+          ? const Home()
+          : const AuthScreen(),
     );
   }
 }
