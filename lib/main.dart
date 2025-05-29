@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: sharedPrefs.get(KeyConstants.isLoggedIn)
+      home: sharedPrefs.get(KeyConstants.isLoggedIn) ?? false
           ? const Home()
           : const AuthScreen(),
     );

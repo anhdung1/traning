@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
-class AuthScreen extends StatefulWidget {
+import 'package:training/presentation/common/base_screen_view/base_screen_view.dart';
+class AuthScreen extends StatelessWidget {
   const AuthScreen({super.key});
 
   @override
-  State<AuthScreen> createState() => _AuthScreenState();
-}
-
-class _AuthScreenState extends State<AuthScreen> {
-  @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return BaseScreenView(title: '', body: _buildBody(),);
+  }
+}
+extension AuthScreenView on AuthScreen {
+  _buildBody() {
+    return Center(
+      child: Text('Auth Screen'),
+    );
   }
 }

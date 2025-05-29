@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:training/presentation/common/base_screen_view/base_screen_view.dart';
 
-class Home extends StatefulWidget {
+class Home extends StatelessWidget {
   const Home({super.key});
 
   @override
-  State<Home> createState() => _HomeState();
+  Widget build(BuildContext context) {
+    return BaseScreenView(title: '',body: _buildBody(),);
+  }
 }
 
-class _HomeState extends State<Home> {
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
+extension HomeView on Home {
+  _buildBody() {
+    return Column(
+      children: [
+        Row(
+          
+        )
+      ],
+    );
   }
 }
