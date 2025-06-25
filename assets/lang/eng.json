@@ -1,0 +1,18 @@
+{
+  "auth": {
+    "sign_in": {
+      "sign_in": "Sign In",
+      "main_title": "Welcome Back",
+      "sub_title": "Hello, please sign in to continue",
+      "forgot_password": "Forgot password?",
+      "no_account_question": "Don't have an account?"
+    },
+    "sign_up": {
+      "sign_up": "Sign Up",
+      "main_title": "Welcome to Us",
+      "sub_title": "Hello, please create a new account",
+      "term_and_conditions": "By creating an account, you agree to the {term_and_conditions}.",
+      "already_have_account": "Already have an account?"
+    }
+  }
+}

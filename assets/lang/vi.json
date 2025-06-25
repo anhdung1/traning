@@ -1,0 +1,19 @@
+{
+    "auth": {
+        "sign_in": {
+            "sign_in": "Đăng nhập",
+            "main_title":"Chào mừng trở lại",
+            "sub_title":"Xin chào, đăng nhập để tiếp tục",
+            "forgot_password":"Quên mật khẩu?",
+            "no_account_question":"Bạn không có tài khoản?"
+            
+        },
+        "sign_up":{
+            "sign_up":"Đăng kí",
+            "main_title":"Chào mừng đến với chúng tôi",
+            "sub_title":"Xin chào, hãy tạo một tài khoản mới",
+            "term_and_conditions":"Bằng cách tạo tài khoản, bạn đồng ý với các {term_and_conditions}.",
+            "already_have_account":"Bạn đã có tài khoản?"
+        }
+    }
+}

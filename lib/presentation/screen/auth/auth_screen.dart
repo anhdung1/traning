@@ -5,13 +5,15 @@ class AuthScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseScreenView(title: '', body: _buildBody(),);
+    return BaseScreenView(title: 'Sign in', body: _buildBody(),);
   }
 }
 extension AuthScreenView on AuthScreen {
   _buildBody() {
-    return Center(
-      child: Text('Auth Screen'),
+    return Column(
+      children: [
+        Text('')
+      ],
     );
   }
 }
