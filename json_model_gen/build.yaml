@@ -1,0 +1,13 @@
+builders:
+  json_locale_builder:
+    import: "package:json_model_gen/builder.dart"
+    builder_factories: ["jsonLocaleBuilder"]
+    build_extensions:
+      {"^assets/lang{{}}.json": ["lib/generated/{{}}.dart"]}
+    auto_apply: root_package
+    build_to: source
+
+targets:
+  $default:
+    sources:
+      - assets/lang/**

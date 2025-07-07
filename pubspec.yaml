@@ -48,6 +48,9 @@ dependencies:
   dio: ^5.8.0+1
 
 dev_dependencies:
+  build_runner: ^2.4.13
+  json_model_gen:
+    path: json_model_gen
   flutter_test:
     sdk: flutter
 
