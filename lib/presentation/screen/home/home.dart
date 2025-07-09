@@ -6,18 +6,17 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseScreenView(title: '',body: _buildBody(),);
+    return BaseScreenView(
+      title: '',
+      body: _buildBody(),
+    );
   }
 }
 
 extension HomeView on Home {
   _buildBody() {
     return Column(
-      children: [
-        Row(
-          
-        )
-      ],
+      children: [Row()],
     );
   }
 }

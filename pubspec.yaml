@@ -44,7 +44,6 @@ dependencies:
   custom_rating_bar: ^3.0.0
   path: ^1.9.0
   stomp_dart_client: ^2.1.0
-  get: ^4.6.6
   dio: ^5.8.0+1
 
 dev_dependencies:

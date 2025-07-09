@@ -8,74 +8,68 @@ class JsonLocaleBuilder implements Builder {
     '^assets/lang/{{}}.json': ['lib/generated/{{}}.locale.dart'],
   };
 
-  @override
+   @override
   Future<void> build(BuildStep buildStep) async {
     final inputId = buildStep.inputId;
 
-    // Ensure only process files in assets/lang/
-    if (!inputId.path.startsWith('assets/lang/')) return;
+    final contents = await buildStep.readAsString(inputId);
+    final jsonMap = json.decode(contents) as Map<String, dynamic>;
 
-    final locale = p.basenameWithoutExtension(inputId.path);
-    final content = await buildStep.readAsString(inputId);
-    final Map<String, dynamic> json = jsonDecode(content);
-
-    final className = 'LocaleStrings${_capitalize(locale)}';
+    final flat = _flattenJson(jsonMap);
 
     final buffer = StringBuffer();
-    final generatedClasses = <String, StringBuffer>{};
+    buffer.writeln('// GENERATED CODE - DO NOT MODIFY BY HAND');
+    buffer.writeln('class S {');
 
-    _generateClass(buffer, className, json, generatedClasses);
-
-    for (var entry in generatedClasses.entries) {
-      buffer.writeln();
-      buffer.writeln(entry.value.toString());
+    for (final entry in flat.entries) {
+      final key = entry.key;
+      final value = entry.value.replaceAll(r'$', r'\$');
+      buffer.writeln('  static const String $key = "$value";');
     }
 
+    buffer.writeln('}');
+    final locale = p.basenameWithoutExtension(inputId.path);
     final outputId = AssetId(
       inputId.package,
       'lib/generated/$locale.locale.dart',
     );
-
     await buildStep.writeAsString(outputId, buffer.toString());
   }
 
-  void _generateClass(
-    StringBuffer out,
-    String className,
-    Map<String, dynamic> json,
-    Map<String, StringBuffer> others,
-  ) {
-    className = snakeToCamel(className);
-    out.writeln('class $className {');
+  Map<String, String> _flattenJson(
+    Map<String, dynamic> json, [
+    String prefix = '',
+  ]) {
+    final Map<String, String> result = {};
 
-    for (var entry in json.entries) {
-      String key = snakeToCamel(entry.key);
-      final value = entry.value;
+    json.forEach((key, value) {
+      final newKey = _toCamelKey(prefix.isEmpty ? key : '$prefix.$key');
 
-      if (value is Map<String, dynamic>) {
-        final nestedClass = snakeToCamel(_capitalize(key));
-        out.writeln('  $nestedClass get $key => $nestedClass();');
+      if (value is String) {
+        result[newKey] = value;
+      } else if (value is Map<String, dynamic>) {
+        result.addAll(_flattenJson(value, prefix.isEmpty ? key : '$prefix.$key'));
+      }
+    });
 
-        final nestedBuffer = StringBuffer();
-        _generateClass(nestedBuffer, nestedClass, value, others);
-        others[nestedClass] = nestedBuffer;
+    return result;
+  }
+
+  String _toCamelKey(String keyPath) {
+  final parts = keyPath.split('.');
+
+  String result = '';
+  for (int i = 0; i < parts.length; i++) {
+    final segmentParts = parts[i].split('_');
+    for (int j = 0; j < segmentParts.length; j++) {
+      final part = segmentParts[j];
+      if (i == 0 && j == 0) {
+        result += part;
       } else {
-        out.writeln('  String get $key => ${jsonEncode(value)};');
+        result += part[0].toUpperCase() + part.substring(1);
       }
     }
-
-    out.writeln('}');
   }
-
-  String snakeToCamel(String input) {
-    final parts = input.split('_');
-    if (parts.isEmpty) return input;
-    return parts.first +
-        parts
-            .skip(1)
-            .map((word) => word[0].toUpperCase() + word.substring(1))
-            .join();
-  }
-
-  String _capitalize(String s) => s[0].toUpperCase() + s.substring(1);
+  return result;
+}
 }

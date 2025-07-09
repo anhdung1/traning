@@ -9,5 +9,7 @@ builders:
 
 targets:
   $default:
-    sources:
-      - assets/lang/**
+    builders:
+      json_model_gen|json_locale_builder:
+        generate_for:
+          - assets/lang/*.json

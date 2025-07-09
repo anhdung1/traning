@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class BaseScreenView extends StatefulWidget {
-  const BaseScreenView({super.key, required this.title, this.onBackPressed,required this.body});
+  const BaseScreenView(
+      {super.key, required this.title, this.onBackPressed, required this.body});
 
   @override
   State<BaseScreenView> createState() => _BaseScreenViewState();
@@ -15,10 +16,9 @@ class _BaseScreenViewState extends State<BaseScreenView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title:  Text(widget.title),
-      ),
-      body: widget.body       
-    );
+        appBar: AppBar(
+          title: Text(widget.title),
+        ),
+        body: widget.body);
   }
 }
