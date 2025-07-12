@@ -1,22 +1,20 @@
-// import 'package:flutter/material.dart';
-// import 'package:training/generated/vi.locale.dart';
 
-// import '../../generated/eng.locale.dart';
 
-// class AppLocaleStrings {
-//   static final Map<String,dynamic> _cache = {};
-//   static dynamic fromLocale(Locale locale){
-//     final lang = locale.languageCode;
-//     if (_cache.containsKey(lang)) {
-//       return _cache[lang];
-//     }
-//     switch (lang) {
-//       case 'en':
-//         return _cache[lang] = LocaleStringsEng();
-//       case 'vi':
-//         return _cache[lang] = LocaleStringsVi();
-//       default:
-//         return _cache[lang] = LocaleStringsEng();
-//   }
-// }
-// }
+import '../../generated/localization/en.locale.dart';
+import '../../generated/localization/s.locale.dart';
+import '../../generated/localization/vi.locale.dart';
+
+class G {
+  static S? _lang;
+
+  static void load(String langName) {
+    switch (langName) {
+      case 'vi':
+        _lang = SVi();
+      case 'en':
+        _lang = SEn();
+    }
+  }
+
+  static S get t => _lang ??= SVi();
+}

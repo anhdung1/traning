@@ -3,7 +3,15 @@ builders:
     import: "package:json_model_gen/builder.dart"
     builder_factories: ["jsonLocaleBuilder"]
     build_extensions:
-      {"^assets/lang{{}}.json": ["lib/generated/{{}}.dart"]}
+      {"^assets/lang{{}}.json": ["lib/generated/localization/{{}}.dart"]}
+    auto_apply: root_package
+    build_to: source
+
+  interface_builder:
+    import: "package:json_model_gen/builder.dart"
+    builder_factories: ["interfaceBuilder"]
+    build_extensions:
+      {"^assets/lang/vi.json": ["lib/generated/localization/s.dart"]}
     auto_apply: root_package
     build_to: source
 
@@ -13,3 +21,6 @@ targets:
       json_model_gen|json_locale_builder:
         generate_for:
           - assets/lang/*.json
+      json_model_gen|interface_builder:
+        generate_for:
+          - assets/lang/vi.json
