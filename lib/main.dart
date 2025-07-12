@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:training/core/constants/key_constants.dart';
 import 'package:training/data/local/prefs/shared_prefs.dart';
-import 'package:training/presentation/screen/auth/auth_screen.dart';
+import 'package:training/presentation/screen/login/auth_screen.dart';
 import 'package:training/presentation/screen/home/home.dart';
 
 void main() async {
@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: sharedPrefs.get(KeyConstants.isLoggedIn) ?? false
           ? const Home()
           : const AuthScreen(),

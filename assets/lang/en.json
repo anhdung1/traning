@@ -5,7 +5,8 @@
       "main_title": "Welcome Back",
       "sub_title": "Hello, please sign in to continue",
       "forgot_password": "Forgot password?",
-      "no_account_question": "Don't have an account?"
+      "no_account_question": "Don't have an account?",
+      "sign_in_failed":"User name or password is incorrect."
     },
     "sign_up": {
       "sign_up": "Sign Up",

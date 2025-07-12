@@ -5,8 +5,8 @@
             "main_title":"Chào mừng trở lại",
             "sub_title":"Xin chào, đăng nhập để tiếp tục",
             "forgot_password":"Quên mật khẩu?",
-            "no_account_question":"Bạn không có tài khoản?"
-            
+            "no_account_question":"Bạn không có tài khoản?",
+            "sign_in_failed":"Tên người dùng hoặc mật khẩu không chính xác."
         },
         "sign_up":{
             "sign_up":"Đăng kí",

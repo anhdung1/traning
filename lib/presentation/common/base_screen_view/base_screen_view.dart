@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:training/contants/string_contants/size_contants.dart';
+import 'package:training/foundation/extension/widget_ext/widget_ext.dart';
 
 class BaseScreenView extends StatefulWidget {
   const BaseScreenView(
@@ -19,6 +21,8 @@ class _BaseScreenViewState extends State<BaseScreenView> {
         appBar: AppBar(
           title: Text(widget.title),
         ),
-        body: widget.body);
+        body: widget.body.padding(
+            left: SizeContants.paddingMedium,
+            right: SizeContants.paddingMedium));
   }
 }
