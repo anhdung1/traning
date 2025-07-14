@@ -1,14 +1,7 @@
 import 'dart:async';
-import 'dart:ui';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:training/core/localization/app_locale_strings.dart';
-
-class LocaltizationState {
-  final String langName;
-
-  LocaltizationState({required this.langName});
-}
+import 'package:training/core/localization/bloc/localization_state.dart';
 
 abstract class LocaltizationEvent {}
 
@@ -18,15 +11,17 @@ class LocaltizationChanged extends LocaltizationEvent {
   LocaltizationChanged({required this.langName});
 }
 
-class LocaltizationBloc extends Bloc<LocaltizationEvent, LocaltizationState> {
-  LocaltizationBloc(super.initialState) {
-    G.load(state.langName);
+class LocaltizationBloc extends Bloc<LocaltizationEvent, LocalizationState> {
+  LocaltizationBloc(String langName)
+      : super(LocalizationState.initial(langName)) {
+    G.load(langName);
     on<LocaltizationChanged>(onLanguageChange);
   }
 
   FutureOr<void> onLanguageChange(
-      LocaltizationChanged event, Emitter<LocaltizationState> emit) {
+      LocaltizationChanged event, Emitter<LocalizationState> emit) {
+    emit(const LocalizationState.loading());
     G.load(event.langName);
-    emit(LocaltizationState(langName: event.langName));
+    emit(LocalizationState.changed(event.langName));
   }
 }

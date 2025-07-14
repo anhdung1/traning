@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-extension CommonColors on Color {
+class CommonColors {
   static BackgroundColor? _commonColors;
   static TextColors? _textColors;
   static BackgroundColor get backgroundColor =>
@@ -9,30 +9,31 @@ extension CommonColors on Color {
 }
 
 class BackgroundColor {
-  static const Color black = Color(0xFF000000);
-  static const Color white = Color(0xFFFFFFFF);
-  static const Color red = Color(0xFFFF0000);
-  static const Color green = Color(0xFF00FF00);
-  static const Color blue = Color(0xFF0000FF);
-  static const Color yellow = Color(0xFFFFFF00);
-  static const Color orange = Color(0xFFFFA500);
-  static const Color purple = Color(0xFF800080);
-  static const Color brown = Color(0xFFA52A2A);
-  static const Color gray = Color(0xFF808080);
-  static const Color lightGray = Color(0xFFD3D3D3);
-  static const Color darkGray = Color(0xFFA9A9A9);
-  static const Color teal = Color(0xFF008080);
-  static const Color cyan = Color(0xFF00FFFF);
-  static const Color pink = Color(0xFFFFC0CB);
-  static const Color indigo = Color(0xFF4B0082);
+  final Color black = const Color(0xFF000000);
+  final Color white = const Color(0xFFFFFFFF);
+  final Color red = const Color(0xFFFF0000);
+  final Color green = const Color(0xFF00FF00);
+  final Color blue = const Color(0xFF0000FF);
+  final Color yellow = const Color(0xFFFFFF00);
+  final Color orange = const Color(0xFFFFA500);
+  final Color purple = const Color(0xFF800080);
+  final Color brown = const Color(0xFFA52A2A);
+  final Color gray = const Color(0xFF808080);
+  final Color lightGray = const Color(0xFFD3D3D3);
+  final Color darkGray = const Color(0xFFA9A9A9);
+  final Color teal = const Color.fromARGB(255, 0, 128, 128);
+  final Color cyan = const Color(0xFF00FFFF);
+  final Color pink = const Color(0xFFFFC0CB);
+  final Color indigo = const Color(0xFF4B0082);
+  final Color loadingColor = const Color.fromRGBO(218, 218, 218, 0.212);
 }
 
 class TextColors {
-  static const Color primary = Color(0xFF212121);
-  static const Color secondary = Color(0xFF757575);
-  static const Color accent = Color(0xFF03A9F4);
-  static const Color error = Color(0xFFF44336);
-  static const Color warning = Color(0xFFFF9800);
-  static const Color info = Color(0xFF2196F3);
-  static const Color success = Color(0xFF4CAF50);
+  final Color primary = const Color(0xFF212121);
+  final Color secondary = const Color(0xFF757575);
+  final Color accent = const Color(0xFF03A9F4);
+  final Color error = const Color(0xFFF44336);
+  final Color warning = const Color(0xFFFF9800);
+  final Color info = const Color(0xFF2196F3);
+  final Color success = const Color(0xFF4CAF50);
 }
