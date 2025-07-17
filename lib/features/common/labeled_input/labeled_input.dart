@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:training/contants/string_contants/size_contants.dart';
 import 'package:training/foundation/extension/text_ext/text_ext.dart';
 import 'package:training/foundation/extension/widget_ext/widget_ext.dart';
-import 'package:training/presentation/common/custom_text_form_field/custom_text_form_field.dart';
-import 'package:training/presentation/common/gap/gap.dart';
+import 'package:training/features/common/custom_text_form_field/custom_text_form_field.dart';
+import 'package:training/features/common/gap/gap.dart';
 
 class LabeledInput extends StatelessWidget {
   const LabeledInput({

@@ -1,3 +1,3 @@
 class KeyConstants {
-  static String isLoggedIn = 'IS_LOG_GED_IN';
+  static String isLoggedIn = 'IS_LOGGED_IN';
 }

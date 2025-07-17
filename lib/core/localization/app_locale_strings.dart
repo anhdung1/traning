@@ -1,4 +1,4 @@
-
+import 'package:training/core/localization/app_locales.dart';
 
 import '../../generated/localization/en.locale.dart';
 import '../../generated/localization/s.locale.dart';
@@ -6,12 +6,14 @@ import '../../generated/localization/vi.locale.dart';
 
 class G {
   static S? _lang;
-
-  static void load(String langName) {
-    switch (langName) {
-      case 'vi':
+  String? a;
+  static String? langName = AppLocales.vietnamese;
+  static void load(String newLangName) {
+    langName = newLangName;
+    switch (newLangName) {
+      case AppLocales.vietnamese:
         _lang = SVi();
-      case 'en':
+      case AppLocales.english:
         _lang = SEn();
     }
   }

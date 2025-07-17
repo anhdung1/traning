@@ -1,10 +1,12 @@
 import 'dart:convert';
 import 'package:build/build.dart';
+import 'package:json_model_gen/component/string_ultis.dart';
+import 'package:path/path.dart' as p;
 
-class InterfaceBuilder implements Builder {
+class JsonLocaleBuilder implements Builder {
   @override
   final buildExtensions = const {
-    '^assets/lang/vi.json': ['lib/generated/localization/s.locale.dart'],
+    '^assets/lang/{{}}.json': ['lib/generated/localization/{{}}.locale.dart'],
   };
 
   @override
@@ -17,22 +19,37 @@ class InterfaceBuilder implements Builder {
     final flat = _flattenJson(jsonMap);
 
     final buffer = StringBuffer();
+    final locale = p.basenameWithoutExtension(inputId.path);
+
     buffer.writeln('// GENERATED CODE - DO NOT MODIFY BY HAND');
+    buffer.writeln('import \'s.locale.dart\';');
+    buffer.writeln('');
     buffer.writeln(
-      'abstract class S {',
+      'class S${locale.substring(0, 1).toUpperCase()}${locale.substring(1)} implements S {',
     );
 
     for (final entry in flat.entries) {
       final key = entry.key;
+      String value = entry.value.replaceAll(r'$', r'\$');
 
-      buffer.writeln('  late String $key;');
+      String param = StringUltis.findValue(value) ?? '';
+
+      buffer.writeln('  @override');
+      if(param.isNotEmpty){
+        param = StringUltis.toCamelKey(param);
+        value = StringUltis.replaceBodyIncludingBraces(value, param);
+        buffer.writeln('  String $key(String $param) => "$value";');
+      }else{buffer.writeln('  String get $key => "$value";');}
+      
+
+      
     }
 
     buffer.writeln('}');
 
     final outputId = AssetId(
       inputId.package,
-      'lib/generated/localization/s.locale.dart',
+      'lib/generated/localization/$locale.locale.dart',
     );
     await buildStep.writeAsString(outputId, buffer.toString());
   }
