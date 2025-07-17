@@ -6,14 +6,19 @@
             "sub_title":"Xin chào, đăng nhập để tiếp tục",
             "forgot_password":"Quên mật khẩu?",
             "no_account_question":"Bạn không có tài khoản?",
-            "sign_in_failed":"Tên người dùng hoặc mật khẩu không chính xác."
+            "sign_in_failed":"Tên người dùng hoặc mật khẩu không chính xác.",
+            "username":"Tên đăng nhập",
+            "password":"Mật khẩu"
         },
         "sign_up":{
             "sign_up":"Đăng kí",
             "main_title":"Chào mừng đến với chúng tôi",
             "sub_title":"Xin chào, hãy tạo một tài khoản mới",
             "term_and_conditions":"Bằng cách tạo tài khoản, bạn đồng ý với các {term_and_conditions}.",
-            "already_have_account":"Bạn đã có tài khoản?"
+            "already_have_account":"Bạn đã có tài khoản?",
+            "username":"Tên đăng nhập",
+            "password":"Mật khẩu",
+            "re_enter_passwword":"Nhập lại mật khẩu"
         }
     }
 }

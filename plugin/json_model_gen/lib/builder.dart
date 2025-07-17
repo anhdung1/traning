@@ -1,6 +1,6 @@
 import 'package:build/build.dart';
-import 'interface_builder.dart';
-import 'json_locale_builder.dart';
+import 'localization/interface_builder.dart';
+import 'localization/json_locale_builder.dart';
 
 Builder jsonLocaleBuilder(BuilderOptions options) => JsonLocaleBuilder();
 

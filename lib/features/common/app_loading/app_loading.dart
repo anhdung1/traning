@@ -8,8 +8,10 @@ class AppLoading extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Positioned.fill(
-            child: ColoredBox(color: CommonColors.backgroundColor.loadingColor))
+        ModalBarrier(color: CommonColors.backgroundColor.loadingColor),
+        const Center(
+          child: CircularProgressIndicator(),
+        )
       ],
     );
   }
