@@ -20,7 +20,7 @@ class LocaltizationBloc extends Bloc<LocaltizationEvent, LocalizationState> {
 
   FutureOr<void> onLanguageChange(
       LocaltizationChanged event, Emitter<LocalizationState> emit) async {
-        if(G.langName== event.langName)return;
+    if (G.langName == event.langName) return;
     emit(const LocalizationState.loading());
     G.load(event.langName);
     emit(LocalizationState.changed(event.langName));

@@ -6,10 +6,10 @@ import '../../generated/localization/vi.locale.dart';
 
 class G {
   static S? _lang;
-  String ?a;
+  String? a;
   static String? langName = AppLocales.vietnamese;
   static void load(String newLangName) {
-    langName= newLangName;
+    langName = newLangName;
     switch (newLangName) {
       case AppLocales.vietnamese:
         _lang = SVi();
